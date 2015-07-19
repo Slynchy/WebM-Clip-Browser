@@ -1,0 +1,29 @@
+<html>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<body style="background-image: url('bg.jpg');font-family: Courier;font-weight: bold;"><center>
+<div id="player" style="width:100%;height:100%"><br>
+<select id="selectedgame" onchange="opennewpage()">
+  <option>Select one...</option>
+</select>
+<br>
+<br>
+</div>
+</center></body>
+<script>
+var JSON_FILE = "videos.json";
+$.getJSON( JSON_FILE, function( data ) {
+		console.log(Object.keys(data.videos[0]));
+		keys = Object.keys(data.videos[0]);
+		for(x=0;x<keys.length;x++){
+			document.getElementById("selectedgame").innerHTML += ( "<option value='"+(keys[x])+"'>" + keys[x] + "</option>");
+		};
+	}).fail(function( jqxhr, textStatus, error ) {
+                    var err = textStatus + ', ' + error;
+                    alert( "Failed to get JSON: " + err);
+    });
+
+function opennewpage(){
+	window.open(document.getElementById("selectedgame").value,"_self");
+};
+</script>
+</html>
