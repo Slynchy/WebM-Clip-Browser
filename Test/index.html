@@ -1,6 +1,5 @@
 <html>
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<link rel="stylesheet" type="text/css" href="easydropdown.css"/>
 <body style="background-image: url('../bg.jpg');font-family: Courier;font-weight: bold;"><center>
 <div id="player" style="width:100%;height:100%;z-index:999;display:none;"></div><br>
 <select id="selectedvideo" onchange="openvideo()">
@@ -31,7 +30,7 @@ $.getJSON( JSON_FILE, function( data ) {
 
 function openvideo(){
 	video = document.getElementById("selectedvideo").value
-	if(video!="Select one..."){
+	if(video!=""){
 		document.getElementById("player").style.display="block";
 		document.getElementById("player").innerHTML='<video id="webmvideo" width=100% height=100% preload="auto" autoplay controls style="z-index:999"> <source src="'+video+'.webm" type="video/webm"> Your browser does not support HTML5 Video </video>';
 		document.getElementById("webmvideo").volume=0.4;
